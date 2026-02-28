@@ -11,12 +11,12 @@
 #define BNC_BUF_SIZE 1024 * 8
 
 typedef enum {
-    BNC_MSVC,
+    BNC_COMPILER_MSVC,
 } CompilerType;
 
 typedef enum {
-    BNC_DEBUG,
-    BNC_RELEASE
+    BNC_CONFIG_DEBUG,
+    BNC_CONFIG_RELEASE
 } ConfigType;
 
 typedef struct {
@@ -55,13 +55,13 @@ void build_command(Executable* exe) {
     }
 
     switch (exe->compiler) {
-    case BNC_MSVC: 
+    case BNC_COMPILER_MSVC: 
         compiler = "cl ";
         break;
     }
 
     switch (exe->config) {
-    case BNC_DEBUG:
+    case BNC_CONFIG_DEBUG:
         config = "/Zi ";
         break;
     }
